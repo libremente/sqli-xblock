@@ -99,6 +99,10 @@ class SqlInjectionXBlock(LmsCompatibilityMixin, XBlock):
         return data.decode("utf8")
 
     # TO-DO: change this view to display your data your own way.
+    # Decorate the view in order to support multiple devices e.g. mobile
+    # See: https://openedx.atlassian.net/wiki/display/MA/Course+Blocks+API
+    # section 'View @supports(multi_device) decorator'
+    @XBlock.supports("multi_device")
     def student_view(self, context=None):
         """
         The primary view of the SqlInjectionXBlock, shown to students
